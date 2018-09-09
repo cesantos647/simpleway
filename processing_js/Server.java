@@ -14,8 +14,8 @@ class Server {
     h = oh;
   }
   
-  void addVehicle(double x, double y, double r, String ID) {
-    vehicles.add(new Vehicle(x, y, r, k, w, h, ID));
+  void addVehicle(double x, double y, double r, String ID, int pID) {
+    vehicles.add(new Vehicle(x, y, r, k, w, h, ID, pID));
   }
   
   Vehicle[] convertArray() {

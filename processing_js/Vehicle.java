@@ -27,10 +27,13 @@ class Vehicle {
   // String ID
   String ID;
   
+  // Point ID
+  int pID;
+  
   // Vector Map
   VectorMap vecMap = new VectorMap();
   
-  Vehicle(double ox, double oy, double or, double ok, double ow, double oh, String nID) {
+  Vehicle(double ox, double oy, double or, double ok, double ow, double oh, String nID, int npID) {
     x = ox;
     y = oy;
     r = or;
@@ -38,13 +41,24 @@ class Vehicle {
     w = ow;
     h = oh;
     ID = nID;
+    pID = npID;
+    if(pID == 1) {
+      px = 600;
+      py = 600;
+    } else if(pID == 2) {
+      px = 100;
+      py = 100;
+    } else if(pID == 3) {
+      px = 600;
+      py = 100;
+    }
     //vecMap.solve(1, 1);
   }
   
   // Calculates car new vector to avoid collision utilizing Newton's Equation of Gravity * -1
   // Basically makes the car act as a magnet :D
   public void calculateVector(Vehicle[] vehicleData) {
-    backup(350, 350);
+    backup(px, py);
     
     
     double nxVel = 0;
@@ -98,9 +112,9 @@ class Vehicle {
   
   private void vectorCap() {
     double vec = Math.sqrt(Math.pow(xVel, 2) + Math.pow(yVel, 2));
-    if(vec > 0.5) {  
-      xVel *= (0.5 / vec);
-      yVel *= (0.5 / vec);
+    if(vec > 0.45) {  
+      xVel *= (0.45 / vec);
+      yVel *= (0.45 / vec);
     }
   }
   
@@ -137,8 +151,8 @@ class Vehicle {
     double xS = (px - x) / distance;
     double yS = (py - y) / distance;
     if(distance != 0 && ID.equals("car")) {  
-      xVel += xS * 0.05;
-      yVel += yS * 0.05;
+      xVel += xS * 0.025;
+      yVel += yS * 0.025;
     }
     
     vectorCap();

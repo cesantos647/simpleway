@@ -13,6 +13,9 @@ void renderSystem() {
     if(main.vehicles.get(i).ID.equals("car")) {  
       stroke(255);
       drawCar(main.vehicles.get(i).x, main.vehicles.get(i).y, main.vehicles.get(i).r, main.vehicles.get(i).ID);
+    } else {
+      stroke(0, 155, 255);
+      drawCar(main.vehicles.get(i).x, main.vehicles.get(i).y, main.vehicles.get(i).r, main.vehicles.get(i).ID);
     }
   }
 }
